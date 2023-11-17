@@ -1,13 +1,25 @@
-const path = require("path");
+const path = require('path')
 
 const config = () => {
   return {
-    entry: "./src/index.js",
+    entry: './src/index.js',
     output: {
-      path: path.resolve(__dirname, "build"),
-      filename: "main.js",
+      path: path.resolve(__dirname, 'build'),
+      filename: 'main.js'
     },
-  };
-};
 
-module.exports = config;
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
+      ],
+    },
+  }
+}
+
+module.exports = config
